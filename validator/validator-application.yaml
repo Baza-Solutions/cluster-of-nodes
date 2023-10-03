@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/Bidon15/celestia-node-cluster.git
     path: apps/validator
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     namespace: validator
     name: in-cluster

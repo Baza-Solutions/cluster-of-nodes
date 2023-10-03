@@ -7,6 +7,7 @@ spec:
   project: app-val
   source:
     repoURL: https://github.com/Bidon15/celestia-node-cluster.git
+    targetRevision: main
     path: apps
   destination:
     name: in-cluster
