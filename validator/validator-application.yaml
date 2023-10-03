@@ -13,3 +13,18 @@ spec:
     name: in-cluster
   syncPolicy:
     automated: {}
+---
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: validator-resources
+spec:
+  sourceRepos:
+    - https://github.com/Bidon15/celestia-node-cluster.git
+  destinations:
+    - namespace: '*'
+      name: in-cluster
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
