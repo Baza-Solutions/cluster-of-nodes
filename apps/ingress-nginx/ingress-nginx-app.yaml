@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-controller
+spec:
+  project: app-val
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 4.8.0
+    helm:
+      values: |
+        controller:
+          replicaCount: 1
+          service:
+            type: LoadBalancer
+  destination:
+    namespace: ingress-nginx
+    name: in-cluster
+  syncPolicy:
+    automated: {}

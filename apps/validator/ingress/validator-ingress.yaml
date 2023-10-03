@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: validator-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/limit-rps: "15"  # Requests per second
+    nginx.ingress.kubernetes.io/limit-burst: "20"  # Burst rate
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: validator-service
+                port:
+                  number: 26656
+          - path: /metrics
+            pathType: Prefix
+            backend:
+              service:
+                name: validator-service
+                port:
+                  number: 26660

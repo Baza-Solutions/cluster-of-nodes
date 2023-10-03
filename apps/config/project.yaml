@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-val
+  namespace: argocd
+spec:
+  description: App of apps for validator setup.
+  destinations:
+    - namespace: '*'# this allows all ns, to disallow certain ns use '!ns' for example namespace: '!istio-system'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - '*'

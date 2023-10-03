@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: validator-resources
+  namespace: argocd
+spec:
+  project: app-val
+  source:
+    repoURL: https://github.com/Bidon15/celestia-node-cluster.git
+    path: apps
+  destination:
+    name: in-cluster
