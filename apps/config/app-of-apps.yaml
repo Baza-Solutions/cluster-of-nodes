@@ -7,6 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Bidon15/celestia-node-cluster.git
+    path: apps
     targetRevision: main
   destination:
     name: in-cluster
+    namespace: argo-cd
