@@ -2,8 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ingress-nginx-controller
+  namespace: argo-cd
 spec:
-  project: app-val
+  project: default
   source:
     repoURL: https://kubernetes.github.io/ingress-nginx
     chart: ingress-nginx
@@ -19,19 +20,3 @@ spec:
     name: in-cluster
   syncPolicy:
     automated: {}
----
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: ingress-nginx-controller
-spec:
-  sourceRepos:
-    - https://github.com/Bidon15/celestia-node-cluster.git
-  destinations:
-    - namespace: '*'
-      name: in-cluster
-    - namespace: '*'
-      name: '*'
-  clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'

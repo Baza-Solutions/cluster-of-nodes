@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: app-val
-  namespace: argocd
+  namespace: argo-cd
 spec:
   description: App of apps for validator setup.
   destinations:

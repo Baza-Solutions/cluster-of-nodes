@@ -2,8 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: validator-resources
+  namespace: argo-cd
 spec:
-  project: app-val
+  project: default
   source:
     repoURL: https://github.com/Bidon15/celestia-node-cluster.git
     path: apps/validator
@@ -13,18 +14,3 @@ spec:
     name: in-cluster
   syncPolicy:
     automated: {}
----
----
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: validator-resources
-spec:
-  sourceRepos:
-    - https://github.com/Bidon15/celestia-node-cluster.git
-  destinations:
-    - namespace: '*'
-      name: in-cluster
-  clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
